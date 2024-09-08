@@ -6,22 +6,41 @@ const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackb
 function search(str) {
 	let results = [];
 
-	// TODO
-
+	// make everything lowercase
+	// look ANYWHERE in the array item for the part of the string
+	results=fruit.filter((val)=>{if(val.toLowerCase().includes(str)==true) return val});
+	//add to results
 	return results;
 }
 
 function searchHandler(e) {
-	// TODO
+	// get the current string
+	//pass it to search
+	//let returned=search(input.value.toLowerCase())
+	//call show suggestions
+	showSuggestions(search(input.value.toLowerCase()),input.value)
 }
 
 function showSuggestions(results, inputVal) {
+	//clear the dropdown list
+	suggestions.innerHTML=""
 
-	// TODO
+	//dropdownlist exists as 'suggestions' item in HTML already
+	//create a hover CSS style
+	//allow the hover of a mouse to highlight the item but not select it in CSS
+	// populate the dropdown list
+	results.forEach(element => {
+		let li=document.createElement("li")
+		li.innerText=element
+		suggestions.append(li)
+	});
+	
 }
 
 function useSuggestion(e) {
-	// TODO
+	// when users click on a suggestion, fill out the search bar and close the dropdown list
+	input.value=e.target.innerText
+	suggestions.innerHTML=""
 }
 
 input.addEventListener('keyup', searchHandler);
