@@ -14,20 +14,20 @@ function search(str) {
 }
 
 function searchHandler(e) {
-	// get the current string
-	//pass it to search
-	//let returned=search(input.value.toLowerCase())
-	//call show suggestions
-	showSuggestions(search(input.value.toLowerCase()),input.value)
+	//if the user deletes all text from the search bar, reset the suggestions to blank
+	if(input.value===''){
+		suggestions.innerHTML=""
+
+	//otherwise get the current string from the input and pass it to search as lowercase
+	}else{
+		showSuggestions(search(input.value.toLowerCase()),input.value)
+	}
 }
 
 function showSuggestions(results, inputVal) {
 	//clear the dropdown list
 	suggestions.innerHTML=""
 
-	//dropdownlist exists as 'suggestions' item in HTML already
-	//create a hover CSS style
-	//allow the hover of a mouse to highlight the item but not select it in CSS
 	// populate the dropdown list
 	results.forEach(element => {
 		let li=document.createElement("li")
